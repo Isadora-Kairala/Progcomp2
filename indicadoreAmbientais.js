@@ -81,6 +81,8 @@ for(let i = 0; i < 5; i++){
 
 //Exibir a região que teve, em média, o menor índice de poluição ao longo dos 5 dias.
 
+
+/*
 let regiaoMenor = 0;
 let mediaMenor = 0;
 
@@ -101,7 +103,29 @@ for(let c = 0; c < 5; c++){ // calcula primeira linha separado pois vou supor q 
         regiaoMenor = i;
        }
    }
+*/
 
+   let medias = [];
+   let somaLinhas;
+
+   for(let i=0;i<matriz.length;i++){
+    somaLinhas = 0; //linhas nova zera a soma
+     for(let j=0;j<matriz.length;j++){
+        somaLinhas += matriz[i][j]
+     }
+     //colocar no vetor 
+     medias[i] = somaLinhas / matriz.length 
+   }
+
+   let menor = medias[0];
+   let posMenor = 0;
+   for(let i=0; i<medias.length;i++){
+    if (medias[i] < menor){
+        menor = medias[i]
+        posMenor = i
+    }
+   }
+   
 
    //mostrar matriz :
    for(let i = 0; i < 5; i++){
@@ -116,4 +140,4 @@ for(let c = 0; c < 5; c++){ // calcula primeira linha separado pois vou supor q 
    console.log(`Os valores da diagonal secundaria são : ${diagonalSecundaria} e sua média é ${mediaSecundaria}`)
    console.log(`A região ${regiaoMaior} teve o maior índice de poluição registrado no dia ${diaIndice}`)
    console.log(`O índice foi superior a 300  ${maior300} vezes.`)
-   console.log(`A região com menor indice de poluicção foi ${regiaoMenor}.`)
+   console.log(`A região com menor média  ${menor} foi ${regioes[posMenor]}.`)
