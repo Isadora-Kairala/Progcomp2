@@ -3,26 +3,33 @@ let diagonalPrincipal = [];
 let diagonalSecundaria = [];
 let somaDiagonal = 0;
 let somaSecundaria = 0;
+let regioes = [];
+let dias = [];
+for(let i = 0; i < 5; i++){
+    regioes.push(prompt(`Informe o nome da região : ${i+1}`))
+}
+for(let c = 0; c < 5; c++){
+    dias.push(Number(prompt(` Informe o dia ${ c+1}: `)))
+}
 
 //linha = Região
 for(let i = 0; i < 5; i++){
-    matriz[i] = [];
+    matriz[i] = []; // cria vetor dentro do vetor
     // coluna = dia
     for(let c = 0; c < 5; c++){
-       let indicePoluicao;
-       do{ valor = Number(prompt(`Insira o Índice de poluição da região ${i+1},  dia ${c+1} :`))
-         }while(valor < 0 || valor > 500)
-        matriz[i][c] = valor; //guarda na matrizz
+
+        do { 
+        matriz[i][c] = prompt(`Informe a poluição da região ${regioes[i]} no dia ${dias[c]}`)
+
+           } while(matriz[i][c] < 0 || matriz[i][c] > 500);
+
 }
 }
 
 // Diagonal principal
 for(let i = 0; i < matriz.length; i++){
     diagonalPrincipal.push(matriz[i][i]);
-}
- 
-for( let i = 0; i<diagonalPrincipal.length;i++){
-    somaDiagonal += diagonalPrincipal[i];
+    somaDiagonal += matriz[i][i]
 }
 
 let mediaDiagonal = somaDiagonal / diagonalPrincipal.length
@@ -39,9 +46,9 @@ for(i=0;i < diagonalSecundaria.length; i++){
     somaSecundaria += diagonalSecundaria[i];
 }
 
-let mediaSecundaria = somaSecundaria / diagonalSecundaria.length
+ let mediaSecundaria = somaSecundaria / diagonalSecundaria.length
 
-/* coluna = 3 - 1 - 0 = 2
+    /* coluna = 3 - 1 - 0 = 2
    coluna = 3 - 1 - 1 = 1
    coluna = 3 - 1 - 2 = 0
     */
