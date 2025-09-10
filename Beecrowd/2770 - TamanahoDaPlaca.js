@@ -23,3 +23,8 @@ while (i < lines.length) {
         }
     }
 }
+
+
+//let input = "10 10\n5 5"
+//input.split(/\n+/)  => separa por \n
+//input.split(/\s+/)  => separa por espaço 
