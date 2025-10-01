@@ -3,13 +3,13 @@
 
     function maiuscula(v){
     for(let i = 0; i < 5; i++){
-        console.log(v[i].toUpperCase());
+        console.log(v[i].toUpperCase());// errado, nao tem como colocar no console log
     }
     }
 
     function subtituicao(v){
         for(let i = 0; i < 5; i++){
-            if (v[i].charAt(0).toUpperCase() === "A"){
+            if (v[i].charAt(0).toUpperCase() === "A"){ // tem como usar slice, e outro parametro parecido com matriz
                 v[i] = "ANÔNIMO"
             }
         }
@@ -36,4 +36,3 @@
     }
     main()
 
-    
