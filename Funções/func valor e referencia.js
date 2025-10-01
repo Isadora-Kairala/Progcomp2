@@ -7,5 +7,5 @@
             alterarNumero(vetor)
             console.log(vetor)
         }
-        main()
+        main()  
 
