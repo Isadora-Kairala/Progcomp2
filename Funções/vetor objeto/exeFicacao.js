@@ -77,19 +77,33 @@ function exibirMedia(funcionarios){
 
 
 function promocao(funcionarios){
-     exibirMedia(funcionarios)
+     let media = exibirMedia(funcionarios)
+     for(let i=0; i < funcionarios.length; i++){
+     if(funcionarios[i].salario < media){
+        funcionarios[i].cargo = "Analista Junior";
+        funcionarios[i].salario = (funcionarios[i].salario * 1.15).toFixed(2) 
+     }
+    }
+     }
     
-}
-    
-function maiorSalário(funcionarios){
 
+    
+function maiorSalario(funcionarios){
+    let maior = funcionarios[0].salario
+    for(let  i=0; i < funcionarios.length; i++){
+        if( funcionarios[i].salario > maior){
+           maior = funcionarios[i].salario;
+        }
+    }
+    console.log(`O maior valor é ${maior}`)
 }
+
 function main(){
     let vetor = [];
     cadastroInicial(vetor) //cadastro inicial
     let opcao
     do{ 
-        opcao = Number((prompt(`Digite\n 1. Cadastrar novo funcionário \n  2. Listar todos os nomes dos funcionários\n  3. Aumentar o salário de todos em 10% \n  4. Buscar salário pelo nome\n  5. Atualizar cargo de um funcionário\n 6. Remover funcionário pelo nome\n 7. Exibir média salarial da empresa\n 8. Encerrar o programa\n`)))
+        opcao = Number((prompt(`Digite\n 1. Cadastrar novo funcionário \n  2. Listar todos os nomes dos funcionários\n 3. Aumentar o salário de todos em 10% \n  4. Buscar salário pelo nome\n  5. Atualizar cargo de um funcionário\n 6. Remover funcionário pelo nome\n 7. Exibir média salarial da empresa\n 8. Promoção\n 9. Maior Salário\n 10. Encerrar o programa\n `)))
         switch(opcao){
             case 1: cadastroNovo(vetor); break;
             case 2: listarNomes(vetor); break;
@@ -107,11 +121,16 @@ function main(){
              removeFunc(vetor, nomeRemove); break;
             case 7: let media = exibirMedia(vetor);
                    console.log(`a média é ${media}`); break;
-            case 8: alert('Programa encerrando'); break;
+
+            case 8: promocao(vetor); break
+            
+            case 9: maiorSalario(vetor); break
+            
+            case 10: alert('Programa encerrando'); break;
             default: alert('Opção inválida'); break;
         }
     }
-    while(opcao != 8);
+    while(opcao != 10);
     console.log(vetor)
 
 
