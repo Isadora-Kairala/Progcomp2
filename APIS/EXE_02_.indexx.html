@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Galeria de Fotos</title>
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      background-color: #f4f4f4;
+      margin: 0;
+      padding: 20px;
+    }
+       .galeria {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+      gap: 20px;
+      justify-items: center;
+    }
+    </style>
+</head>
+<body> 
+
+  <h1>Galeria de Fotos</h1>
+  <button onclick="carregarFotos()">Carregar Fotos</button>
+  <div id="galeria" class="galeria"></div>
+
+  <script>
+    async function carregarFotos() {
+      try {
+        const resposta = await fetch("https://jsonplaceholder.typicode.com/photos?_limit=10");
+        const fotos = await resposta.json();
+
+        const galeria = document.getElementById("galeria");
+        galeria.innerHTML = "";
+
+        for (let i = 0; i < fotos.length; i++) {
+          const card = document.createElement("div");
+          card.classList.add("card");
+
+          card.innerHTML = `
+            <img src="${fotos[i].thumbnailUrl}" alt="${fotos[i].title}">
+            <p class="titulo">${fotos[i].title}</p>
+          `;
+
+          galeria.appendChild(card);
+        }
+      } catch (erro) {
+        console.error("Erro ao carregar galeria:", erro);
+        alert("Não foi possível carregar as fotos da API.");
+      }
+    }
+  </script>
+
+</body>
+</html>
